@@ -1,9 +1,8 @@
-#
-12-FACTOR APP
+#12-FACTOR APP
 In the modern era, software is commonly delivered as a service called web apps, or software-as-a-service. The twelve-factor app is a methodology for building software-as-a-service app.
 
 ---
-I. Codebase
+##I. Codebase
    A twelve-factor app is always tracked in a version control system, such as Git, Mercurial, or 
    Subversion. A copy of the revision tracking database is known as a code repository, often
    shortened to code repo or just repo.
@@ -18,7 +17,7 @@ I. Codebase
       factor shared code into libraries which can be included through the dependency manager.
       
 --- 
-II. Dependencies
+##II. Dependencies
    Most programming languages offer a packaging system for distributing support libraries, such as
    CPAN for Perl or Rubygems for Ruby. Libraries installed through a packaging system can be
    installed system-wide (known as “site packages”) or scoped into the directory containing the
@@ -31,7 +30,7 @@ II. Dependencies
    uniformly to both production and development.
    
 ---
-III. Config
+##III. Config
    An app’s config is everything that is likely to vary between deploys (staging, production,
    developer environments, etc). 
    This includes:
@@ -39,7 +38,7 @@ III. Config
    >Credentials to external services such as Amazon S3 or Twitter
    >Per-deploy values such as the canonical hostname for the deploy.
 ---
-IV. Backing services
+##IV. Backing services
    A backing service is any service the app consumes over the network as part of its normal
    operation. Examples include datastores (such as MySQL or CouchDB), messaging/queueing systems
    (such as RabbitMQ or Beanstalkd), SMTP services for outbound email (such as Postfix), and
@@ -54,7 +53,7 @@ IV. Backing services
    The code for a twelve-factor app makes no distinction between local and third party services. 
    
 ---
-V. Build, release, run
+##V. Build, release, run
    A codebase is transformed into a (non-development) deploy through three stages:
    *The build stage is a transform which converts a code repo into an executable bundle known as
      a build. Using a version of the code at a commit specified by the deployment process, the
@@ -66,13 +65,13 @@ V. Build, release, run
      launching some set of the app’s processes against a selected release.
      
 ---
-VI. Processes
+##VI. Processes
     The app is executed in the execution environment as one or more processes.
     Twelve-factor processes are stateless and share-nothing. Any data that needs to persist must
     be stored in a stateful backing service.
     
 ---
-VII. Port binding
+##VII. Port binding
     Web apps are sometimes executed inside a webserver container. For example, PHP apps might run
     as a module inside Apache HTTPD, or Java apps might run inside Tomcat.
 
@@ -80,7 +79,7 @@ VII. Port binding
     webserver into the execution environment to create a web-facing service. The web app exports
     HTTP as a service by binding to a port, and listening to requests coming in on that port.
 ---
-VIII. Concurrency
+##VIII. Concurrency
    Any computer program, once run, is represented by one or more processes. Web apps have taken a
    variety of process-execution forms. For example, PHP processes run as child processes of
    Apache, started on demand as needed by request volume. Java processes take the opposite
@@ -89,13 +88,13 @@ VIII. Concurrency
    cases, the running process(es) are only minimally visible to the developers of the app.
    
 ---
-IX. Disposability
+##IX. Disposability
    The twelve-factor app’s processes are disposable, meaning they can be started or stopped at a
    moment’s notice. This facilitates fast elastic scaling, rapid deployment of code or config
    changes, and robustness of production deploys.
    
 ---
-X. Dev/prod parity
+##X. Dev/prod parity
   Historically, there have been substantial gaps between development (a developer making live
   edits to a local deploy of the app) and production (a running deploy of the app accessed by end
   users). These gaps manifest in three areas:
@@ -107,7 +106,7 @@ X. Dev/prod parity
     production deploy uses Apache, MySQL, and Linux.
     
 ---
-XI. Logs
+##XI. Logs
    Logs provide visibility into the behavior of a running app. In server-based environments they
    are commonly written to a file on disk (a “logfile”); but this is only an output format.
    
@@ -118,15 +117,15 @@ XI. Logs
    fixed beginning or end, but flow continuously as long as the app is operating.
    
 ---
-XII. Admin processes
+##XII. Admin processes
    The process formation is the array of processes that are used to do the app’s regular business
    (such as handling web requests) as it runs. Separately, developers will often wish to do one-
    off administrative or maintenance tasks for the app, such as:
 
-   >Running database migrations.
-   >Running a console (also known as a REPL shell) to run arbitrary code or inspect the app’s
+   *Running database migrations.
+   *Running a console (also known as a REPL shell) to run arbitrary code or inspect the app’s
     models against the live database. Most languages provide a REPL by running the interpreter
     without any arguments (e.g. python or perl) or in some cases have a separate command (e.g. irb
     for Ruby,rails console for Rails).
-   >Running one-time scripts committed into the app’s repo (e.g. php scripts/fix_bad_records.php).
+   *Running one-time scripts committed into the app’s repo (e.g. php scripts/fix_bad_records.php).
 
