@@ -1,10 +1,10 @@
 # How A Request Gets Served
 There are a handful of general steps that occur between the time you request a web page and the time it displays in your browser.
-  1.DNS Lookup
-  2.Browser sends an HTTP request
-  3.Server responds and sends back the requested HTML file
-  4.Browser begins to render HTML
-  5.Browser sends additional requests for objects embedded in the html file (CSS files, images,
+  1*DNS Lookup
+  2*Browser sends an HTTP request
+  3*Server responds and sends back the requested HTML file
+  4*Browser begins to render HTML
+  5*Browser sends additional requests for objects embedded in the html file (CSS files, images,
     javascript, etc.)
     
 ---
@@ -40,5 +40,8 @@ There are a handful of general steps that occur between the time you request a w
    That was a pretty quick walk through of what happens when you type a URL into a browser or
    click a link from one page to another. It admittedly skips a lot of details, but hopefully it’s
    enough to understand that a lot of things happen before a web page loads.
+   
+---
+   
   
   
