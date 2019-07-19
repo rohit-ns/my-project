@@ -34,9 +34,10 @@ In the modern era, software is commonly delivered as a service called web apps, 
    An app’s config is everything that is likely to vary between deploys (staging, production,
    developer environments, etc). 
    This includes:
-   >Resource handles to the database, Memcached, and other backing services
-   >Credentials to external services such as Amazon S3 or Twitter
-   >Per-deploy values such as the canonical hostname for the deploy.
+   *Resource handles to the database, Memcached, and other backing services
+   *Credentials to external services such as Amazon S3 or Twitter
+   *Per-deploy values such as the canonical hostname for the deploy.
+   
 ---
 ## IV. Backing services
    A backing service is any service the app consumes over the network as part of its normal
@@ -66,18 +67,21 @@ In the modern era, software is commonly delivered as a service called web apps, 
      
 ---
 ## VI. Processes
-    The app is executed in the execution environment as one or more processes.
-    Twelve-factor processes are stateless and share-nothing. Any data that needs to persist must
-    be stored in a stateful backing service.
+   The app is executed in the execution environment as one or more processes.
+   In the simplest case, the code is a stand-alone script, the execution environment is a developer’s local laptop with an 
+   installed language runtime, and the process is launched via the command line (for example, python my_script.py). On the 
+   other end of the spectrum, a production deploy of a sophisticated app may use many process types, instantiated into zero
+   or more running processes.
     
 ---
 ## VII. Port binding
-    Web apps are sometimes executed inside a webserver container. For example, PHP apps might run
-    as a module inside Apache HTTPD, or Java apps might run inside Tomcat.
-
-    The twelve-factor app is completely self-contained and does not rely on runtime injection of a
-    webserver into the execution environment to create a web-facing service. The web app exports
-    HTTP as a service by binding to a port, and listening to requests coming in on that port.
+   Web apps are sometimes executed inside a webserver container. For example, PHP apps might run as a module inside Apache 
+   HTTPD, or Java apps might run inside Tomcat.
+   
+   The twelve-factor app is completely self-contained and does not rely on runtime injection of a webserver into the 
+   execution environment to create a web-facing service. The web app exports HTTP as a service by binding to a port, and 
+   listening to requests coming in on that port. 
+   
 ---
 ## VIII. Concurrency
    Any computer program, once run, is represented by one or more processes. Web apps have taken a
