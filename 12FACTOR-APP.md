@@ -114,7 +114,6 @@ In the modern era, software is commonly delivered as a service called web apps, 
    Logs provide visibility into the behavior of a running app. In server-based environments they
    are commonly written to a file on disk (a “logfile”); but this is only an output format.
    
----
    Logs are the stream of aggregated, time-ordered events collected from the output streams of all
    running processes and backing services. Logs in their raw form are typically a text format with
    one event per line (though backtraces from exceptions may span multiple lines). Logs have no
